@@ -1,8 +1,12 @@
 using FlugbahnLib;
+using Game.Properties;
 using Svg;
+using System.Collections;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
+using System.Globalization;
 using System.Media;
+using System.Resources;
 using System.Xml.Serialization;
 
 namespace Game
@@ -12,6 +16,7 @@ namespace Game
         private List<Insekt> insekten = new();
         private List<Image> schlaeger = new();
         private List<int> uniqueNumbers = new();
+        private List<string> insektenBilder = new();
 
         private SoundPlayer click = new();
         private SoundPlayer player = new();
@@ -38,6 +43,7 @@ namespace Game
         {
             InitializeComponent();
             SetStartButtonPosition();
+            ReadPictureFromResource();
             Refresh();
         }
 
@@ -52,6 +58,7 @@ namespace Game
             for (int i = 0; i < range; i++)
             {
                 int randomIndex = random.Next(i, range);
+                Thread.Sleep(10);
                 int temp = numbers[i];
                 numbers[i] = numbers[randomIndex];
                 numbers[randomIndex] = temp;
@@ -82,7 +89,7 @@ namespace Game
             schlaeger.Clear();
             SchlaegerBilder();
 
-            uniqueNumbers = GenerateUniqueNumbers(2);
+            uniqueNumbers = GenerateUniqueNumbers(3);
 
             // Variable reset
             iGetroffen = 0;
@@ -478,7 +485,7 @@ namespace Game
 
         private void DrawSchlaeger(Graphics g)
         {
-            try
+            try      
             {
                 var left = nWidth - 65;
                 var top = nHeight - 110;
@@ -557,13 +564,31 @@ namespace Game
                 ClientSize.Height / 2) - btnStart.Size / 2;
         }
 
+        /// <summary>
+        /// Die SVG-Insekten liegen im Ordner Resources. Hier werden sie ausgelesen
+        /// und in der Liste: insektenBilder abgelegt
+        /// </summary>
+        private void ReadPictureFromResource()
+        {
+            ResourceSet resourceSet = Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+            foreach (DictionaryEntry entry in resourceSet)
+            {
+                string resKey = entry.Key.ToString();
+                if (resKey.Contains("insekt"))
+                {
+                    insektenBilder.Add( entry.Value.ToString());
+                }
+            }
+        }
+
         private void ReadXML(object sender, EventArgs e)
         {
             for (int i = 0; i < uniqueNumbers.Count; i++)
             {
                 try
                 {
-                    var sPath = AppDomain.CurrentDomain.BaseDirectory + "\\..\\..\\..\\flugbahnen\\flugbahn" + i + ".xml";
+                    int nZufall = uniqueNumbers[i];
+                    var sPath = AppDomain.CurrentDomain.BaseDirectory + "\\..\\..\\..\\flugbahnen\\flugbahn" + nZufall + ".xml";
 
                     XmlSerializer seria = new XmlSerializer(typeof(List<Pos>));
                     using (FileStream fs = new FileStream(sPath, FileMode.Open))
@@ -575,8 +600,11 @@ namespace Game
 
                         // @"sounds\click\sound"" + numclick + ""_hall.wav";
                         // SvgDocument.Open<SvgDocument>
-                        var sPathPic = @"pics\insekt" + i + ".svg";
-                        insekt.Pic = SvgDocument.Open<SvgDocument>(sPathPic);
+                        //var sPathPic = @"pics\insekt" + i + ".svg";
+                        //insekt.Pic = SvgDocument.Open<SvgDocument>(sPathPic);
+
+                        // Besser die svg-Dateien, d.h. als Text-Datei!! als Ressource im VS ablegen                                      
+                        insekt.Pic = SvgDocument.FromSvg<SvgDocument>(insektenBilder[nZufall]);
 
                         if (i == 0)
                         {

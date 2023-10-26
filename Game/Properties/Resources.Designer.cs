@@ -79,5 +79,47 @@ namespace Game.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+        ///&lt;svg
+        ///   width=&quot;623&quot;
+        ///   height=&quot;623&quot;
+        ///   overflow=&quot;hidden&quot;
+        ///   version=&quot;1.1&quot;
+        ///   id=&quot;svg12&quot;
+        ///   sodipodi:docname=&quot;biene2.svg&quot;
+        ///   inkscape:version=&quot;1.2 (dc2aedaf03, 2022-05-15)&quot;
+        ///   xmlns:inkscape=&quot;http://www.inkscape.org/namespaces/inkscape&quot;
+        ///   xmlns:sodipodi=&quot;http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd&quot;
+        ///   xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;
+        ///   xmlns=&quot;http://www.w3.org/2000/svg&quot;
+        ///   xmlns:svg=&quot;http://www.w3.org/2000/svg&quot;&gt;
+        ///  &lt;sodipodi:namedview
+        ///  [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string insekt0 {
+            get {
+                return ResourceManager.GetString("insekt0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die &lt;svg width=&quot;403&quot; height=&quot;328&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; overflow=&quot;hidden&quot;&gt;&lt;defs&gt;&lt;clipPath id=&quot;clip0&quot;&gt;&lt;rect x=&quot;1121&quot; y=&quot;1367&quot; width=&quot;403&quot; height=&quot;328&quot;/&gt;&lt;/clipPath&gt;&lt;image width=&quot;403&quot; height=&quot;328&quot; xlink:href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZMAAAFICAYAAACV5RONAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAMsAAADLAAShkWtsAAP+lSURBVHhe7P13tBTVuu6P379/496zWZ1z7l4555wIay1yzjlHARGQYCMggmSJgiAIKKKgiAlQl4oJiQqScxQkw0p4x3h+z1vdS3Dffc73hB1073rHeMas [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string insekt1 {
+            get {
+                return ResourceManager.GetString("insekt1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die &lt;svg width=&quot;396&quot; height=&quot;395&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; overflow=&quot;hidden&quot;&gt;&lt;defs&gt;&lt;clipPath id=&quot;clip0&quot;&gt;&lt;rect x=&quot;1850&quot; y=&quot;1119&quot; width=&quot;396&quot; height=&quot;395&quot;/&gt;&lt;/clipPath&gt;&lt;image width=&quot;396&quot; height=&quot;395&quot; xlink:href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGLCAYAAADUPKXyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAMsAAADLAAShkWtsAAP+lSURBVHhe7P3nl1xlmuYLn/9gPpw1s7r79PTbXdOmuqsKkEtvIjO89yYjMiLSe6tMpVIpE/LeIIc8AgRIeBBOgFACEhICIS+QhBzy3nt6neu9rycyqKqp [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string insekt2 {
+            get {
+                return ResourceManager.GetString("insekt2", resourceCulture);
+            }
+        }
     }
 }

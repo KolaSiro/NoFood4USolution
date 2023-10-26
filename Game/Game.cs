@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Game
+﻿namespace Game
 {
     public class Game
     {
@@ -47,7 +41,8 @@ namespace Game
         public const int MOUSE_POS_Y_INIT = 9999;
 
         /// <summary>
-        /// So viel mal darf das Insekt durch die Landingzone fliegen, bis das Spiel fertig ist
+        /// So viel mal darf das Insekt durch die Landingzone 
+        /// fliegen, bis das Spiel fertig ist
         /// </summary>
         public const int MAX_FLIEGE_LANDINGZONE = 10;
 
