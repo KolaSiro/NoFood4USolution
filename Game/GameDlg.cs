@@ -29,15 +29,18 @@ namespace Game
         private int nAnzahlMouseClicked = 0;
         private int nWidth = 10;
         private int nHeight = 10;
+
+        // Zeigt an, wie oft durch das Essen geflogen wurde.
         private int iDurchLandingZone;
 
+        // Position des Mausklicks
         private Pos mouseClickPos = new Pos();
 
+        // Zone wo das Essen liegt
         private Rectangle rectEssen;
 
+        // Groesse des Insekts
         private int nInsektSize = 50;
-
-        private SvgDocument svgDocFood = SvgDocument.Open<SvgDocument>(AppDomain.CurrentDomain.BaseDirectory + "\\..\\..\\..\\pics\\pizza_0.svg");
 
         public GameDlg()
         {
@@ -108,7 +111,7 @@ namespace Game
             schlaeger.Clear();
             InsektenKlatscheErzeugen();
 
-            uniqueNumbers = GenerateUniqueNumbers(3);
+            uniqueNumbers = GenerateUniqueNumbers(Game.MAX_INSEKTEN_COUNT);
 
             // Variable reset
             iGetroffen = 0;
@@ -274,24 +277,21 @@ namespace Game
         }
 
         /// <summary>
-        /// Fliege zeichnen in Pixel
+        /// Insekt und/oder totes Insekt zeichnen in Pixel
         /// </summary>
         /// <param name="g">Graphics</param>
-        /// <param name="pos">Position in Pixel</param>
+        /// <param name="posFirst">Position in Pixel</param>
         /// <param name="insekt">Insekt</param>
-        private void DrawFly(Graphics g, Pos pos, Insekt insekt)
+        private void DrawFly(Graphics g, Pos posFirst, Insekt insekt)
         {
             var winkel = 0f;
             var eQuadrant = Quadrant.NONE;
 
-            var bmpPic = insekt.Pic.Draw(nInsektSize, nInsektSize);
-            var pic = bmpPic;
+            var pic = insekt.Pic.Draw(nInsektSize, nInsektSize); 
 
-            var posFirst = pos;
+            var posNextXYprozent = insekt.positionen[insekt.IndexOfPosition + 1];
 
-            var posKurt = insekt.positionen[insekt.IndexOfPosition + 1];
-
-            var posNext = ProzentInPixelUmwandeln(posKurt.XPos, posKurt.YPos);
+            var posNext = ProzentInPixelUmwandeln(posNextXYprozent.XPos, posNextXYprozent.YPos);
 
             Debug.WriteLine("Position: " + GetQuadrant(posFirst, posNext));
 
@@ -333,19 +333,19 @@ namespace Game
                     }
                 }
 
-                if (DrawFlyDeath(g, pos, insekt, pic) == true)
+                if (DrawFlyDeath(g, posFirst, insekt, pic) == true)
                 {
                     return;
                 }
 
-                g.DrawImage(pic, pos.X - pic.Width / 2f, pos.Y - pic.Height / 2f);
+                g.DrawImage(pic, posFirst.X - pic.Width / 2f, posFirst.Y - pic.Height / 2f);
             }
             else
             {
                 // Normalfall
                 winkel = GetWinkelDerPositionen(posFirst, posNext);
                 eQuadrant = GetQuadrant(posFirst, posNext);
-                DrawPic(g, pos, eQuadrant, winkel, insekt);
+                DrawPic(g, posFirst, eQuadrant, winkel, insekt);
             }
         }
 
@@ -361,6 +361,8 @@ namespace Game
         {
             if (insekt.Tod)
             {
+                insekt.HitBox = new Rectangle();
+
                 if (insekt.TodesPosition.X == -1)
                 {
                     insekt.TodesPosition.X = p.X;
@@ -368,7 +370,7 @@ namespace Game
                 }
                 if (insekt.TodesPosition.Y < Height - pic.Height)
                 {
-                    insekt.TodesPosition.Y += 5; // wie schnell nach unten
+                    insekt.TodesPosition.Y += 6; // wie schnell nach unten
                 }
                 g.DrawImage(pic, insekt.TodesPosition.X - pic.Width / 2, insekt.TodesPosition.Y - pic.Height / 2);
                 return true;
@@ -377,9 +379,8 @@ namespace Game
         }
 
         private void DrawPic(Graphics g, Pos p, Quadrant quadrant, float fWinkel, Insekt insekt)
-        {
-            var bmpPic = insekt.Pic.Draw(nInsektSize, nInsektSize);
-            var pic = bmpPic;
+        {            
+            var pic = insekt.Pic.Draw(nInsektSize, nInsektSize);
 
             if (DrawFlyDeath(g, p, insekt, pic) == true)
             {
@@ -501,22 +502,37 @@ namespace Game
 
         private void DrawFood(Graphics g)
         {
-            var w = this.ClientSize.Width / (int)GlobalValues.LANDING_ZONE_WIDTH_AND_HEIGHT_VALUE;
-            var bmpPic = svgDocFood.Draw(w, w);
-
             var pInPixel = ProzentInPixelUmwandeln(
                 GlobalValues.LANDING_ZONE_POS_X_PERCENT,
                 GlobalValues.LANDING_ZONE_POS_Y_PERCENT);
 
-            g.DrawImage(bmpPic, pInPixel.X - bmpPic.Width / 2, pInPixel.Y - bmpPic.Height / 2);
+            // Essensteller
+            var sPathToPizzaTeller = @"pics\pizza0.jpg";
+            Image imgPizzaTeller = Image.FromFile(sPathToPizzaTeller);
+
+            g.DrawImage(imgPizzaTeller, pInPixel.X - imgPizzaTeller.Width / 2, pInPixel.Y - imgPizzaTeller.Height / 2);
+
+            var nPic = 8 - iDurchLandingZone;
+            if (nPic < 1)
+                return;
+
+            // Essen
+            var sPathToPic = @"pics\pizza" + nPic + ".png";
+            Image imgPizza = Image.FromFile(sPathToPic);
+
+            g.DrawImage(imgPizza, pInPixel.X - imgPizza.Width / 2, pInPixel.Y - imgPizza.Height / 2);
         }
 
+        /// <summary>
+        /// Zeichnet die Schlaeger
+        /// </summary>
+        /// <param name="g"></param>
         private void DrawSchlaeger(Graphics g)
         {
-            try      
+            try
             {
-                var left = nWidth - 65;
-                var top = nHeight - 110;
+                var left = nWidth - 50;
+                var top = nHeight - 100;
                 for (int i = 0; i < schlaeger.Count - 1; i++)
                 {
                     g.DrawImage(schlaeger[i], left, top, 50, 100);
@@ -568,7 +584,7 @@ namespace Game
             nHeight = this.ClientSize.Height;
             Game.InsektHitBoxWidth = nInsektSize;
             Game.InsektHitBoxHeight = nInsektSize;
-            nInsektSize = Width / 10;
+            nInsektSize = Height / 10;
             Refresh();
             SetStartButtonPosition();
         }
@@ -580,7 +596,7 @@ namespace Game
             nHeight = this.ClientSize.Height;
             Game.InsektHitBoxWidth = nInsektSize;
             Game.InsektHitBoxHeight = nInsektSize;
-            nInsektSize = Width / 10;
+            nInsektSize = Height / 10;
             Refresh();
             SetStartButtonPosition();
         }
@@ -604,11 +620,19 @@ namespace Game
                 string resKey = entry.Key.ToString();
                 if (resKey.Contains("insekt"))
                 {
-                    insektenBilder.Add( entry.Value.ToString());
+                    insektenBilder.Add(entry.Value.ToString());
                 }
             }
         }
 
+        /// <summary>
+        /// Liest aus verschiedenen XML-Files die Flugbahnpositionen aus, und ordnet diese 
+        /// den Insekten zu.
+        /// Alle Insekten liegen in einer Liste und werden mit einem Timer nacheinander 
+        /// gestartet.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ReadXML(object sender, EventArgs e)
         {
             for (int i = 0; i < uniqueNumbers.Count; i++)
@@ -627,7 +651,7 @@ namespace Game
                         insekt.positionen = (List<Pos>)seria.Deserialize(fs);
 
                         // Besser die svg-Dateien, d.h. als Text-Datei!!
-                        // als Ressource im VS ablegen                                      
+                        // als Ressource im VS ablegen
                         insekt.Pic = SvgDocument.FromSvg<SvgDocument>(insektenBilder[nZufall]);
 
                         if (i == 0)
