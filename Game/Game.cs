@@ -20,22 +20,7 @@
         /// <summary>
         /// HitBox-Hoehe vom Essen
         /// </summary>
-        public const double ESSEN_HITBOX_HEIGHT = 0.15;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public const int FLIEGE_GESCHWINDIGKEIT_AENDERUNG = 20;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public const int FLIEGE_MIN_GESCHWINDIGKEIT = 20;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public const int FLIEGE_MAX_GESCHWINDIGKEIT = 240;
+        public const double ESSEN_HITBOX_HEIGHT = 0.15;        
 
         public const int MOUSE_POS_X_INIT = 9999; 
         public const int MOUSE_POS_Y_INIT = 9999;

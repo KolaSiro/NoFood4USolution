@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="flugbahnen\flugbahn0.xml" />
+    <None Remove="flugbahnen\flugbahn1.xml" />
+    <None Remove="flugbahnen\flugbahn2.xml" />
     <None Remove="pics\Fliegenklatsche_gelb.jpg" />
     <None Remove="pics\insekt0.svg" />
     <None Remove="pics\insekt1.svg" />
@@ -31,6 +34,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="flugbahnen\flugbahn0.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flugbahnen\flugbahn1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flugbahnen\flugbahn2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="sounds\click\sound4_hall.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>

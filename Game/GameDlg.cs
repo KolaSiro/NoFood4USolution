@@ -47,6 +47,13 @@ namespace Game
             Refresh();
         }
 
+        /// <summary>
+        /// Erzeugt zufaellig Zahlen, damit immer unterschiedliche Flugbahnen, Geraeusche
+        /// und Insektenbilder verwendet werden.
+        /// </summary>
+        /// <param name="range"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         private static List<int> GenerateUniqueNumbers(int range)
         {
             if (range < 0 || range > 10)
@@ -67,14 +74,21 @@ namespace Game
             return numbers;
         }
 
-        private void SchlaegerBilder()
+        /// <summary>
+        /// Insektenklatschen erstellen
+        /// </summary>
+        private void InsektenKlatscheErzeugen()
         {
             for (int i = 0; i < 11; i++)
             {
-                schlaeger.Add(Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "\\..\\..\\..\\pics\\Fliegenklatsche_gelb.jpg"));
+                schlaeger.Add(Image.FromFile(@"pics\Fliegenklatsche_gelb.jpg"));
             }
         }
 
+        /// <summary>
+        /// Insektenklatschen entfernen
+        /// </summary>
+        /// <param name="index"></param>
         private void RemoveImageFromSchlaeger(int index)
         {
             if (index >= 0 && index < schlaeger.Count)
@@ -84,10 +98,15 @@ namespace Game
             }
         }
 
+        /// <summary>
+        /// Event-Handler: Startet das Bild
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
             schlaeger.Clear();
-            SchlaegerBilder();
+            InsektenKlatscheErzeugen();
 
             uniqueNumbers = GenerateUniqueNumbers(3);
 
@@ -128,6 +147,11 @@ namespace Game
             lblZeitUebrig.Text = "Zeit uebrig: " + (Game.MAX_SPIEL_ZEIT - iZeit) + " sek";
         }
 
+        /// <summary>
+        /// Event-Handler: zeichnet alle Objekte
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GameDlg_Paint(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -152,6 +176,10 @@ namespace Game
             DrawMausClickKreis(g);
         }
 
+        /// <summary>
+        /// Event-Handler: zeichnet den Schlaeger- bzw. Mausklick-Kreis
+        /// </summary>
+        /// <param name="g"></param>
         private void DrawMausClickKreis(Graphics g)
         {
             if (nAnzahlMouseClicked > Game.MAX_SCHLAEGE)
@@ -199,7 +227,7 @@ namespace Game
                     g.DrawRectangle(Pens.Green, insekt.HitBox);
                 }
 
-                // wir muessen mindesten 2 Position haben fuer Flugbahnberechnung
+                // wir muessen mindestens 2 Position haben fuer Flugbahnberechnung
                 if (insekt.positionen.Count < 2)
                 {
                     continue;
@@ -322,7 +350,7 @@ namespace Game
         }
 
         /// <summary>
-        /// Zeichnet das tote Insekt. Es faellt langsam zum Boden
+        /// Zeichnet das tote Insekt. Es faellt langsam zu Boden
         /// </summary>
         /// <param name="g">Graphics</param>
         /// <param name="p">Position in Pixel</param>
@@ -588,22 +616,18 @@ namespace Game
                 try
                 {
                     int nZufall = uniqueNumbers[i];
-                    var sPath = AppDomain.CurrentDomain.BaseDirectory + "\\..\\..\\..\\flugbahnen\\flugbahn" + nZufall + ".xml";
+                    var sPathXML = @"flugbahnen\flugbahn" + nZufall + ".xml";
 
                     XmlSerializer seria = new XmlSerializer(typeof(List<Pos>));
-                    using (FileStream fs = new FileStream(sPath, FileMode.Open))
+                    using (FileStream fs = new FileStream(sPathXML, FileMode.Open))
                     {
                         var insekt = new Insekt();
                         insekt.Id = i;
                         insekt.positionen.Clear();
                         insekt.positionen = (List<Pos>)seria.Deserialize(fs);
 
-                        // @"sounds\click\sound"" + numclick + ""_hall.wav";
-                        // SvgDocument.Open<SvgDocument>
-                        //var sPathPic = @"pics\insekt" + i + ".svg";
-                        //insekt.Pic = SvgDocument.Open<SvgDocument>(sPathPic);
-
-                        // Besser die svg-Dateien, d.h. als Text-Datei!! als Ressource im VS ablegen                                      
+                        // Besser die svg-Dateien, d.h. als Text-Datei!!
+                        // als Ressource im VS ablegen                                      
                         insekt.Pic = SvgDocument.FromSvg<SvgDocument>(insektenBilder[nZufall]);
 
                         if (i == 0)
@@ -641,6 +665,11 @@ namespace Game
                 return Quadrant.NONE;
         }
 
+        /// <summary>
+        /// Play-Back: Insekten Refresh
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timerPlayBack_Tick(object sender, EventArgs e)
         {
             Invalidate();
@@ -727,9 +756,9 @@ namespace Game
                 var posInsektInPixel = ProzentInPixelUmwandeln(posOfInsect.XPos, posOfInsect.YPos);
 
                 // Mittelpunkt von Hitbox herausfinden
-                Point ptMitte = new Point(
-                    (int)posInsektInPixel.X - insekt.HitBox.Width / 2,
-                    (int)posInsektInPixel.Y - insekt.HitBox.Height / 2);
+                //Point ptMitte = new Point(
+                //    (int)posInsektInPixel.X - insekt.HitBox.Width / 2,
+                //    (int)posInsektInPixel.Y - insekt.HitBox.Height / 2);
 
                 // Mittelpunkt von Hitbox herausfinden
                 rectCursor.X = e.X - 50;
@@ -814,6 +843,11 @@ namespace Game
             lblZeitUebrig.Text = "Zeit uebrig: " + (Game.MAX_SPIEL_ZEIT - iZeit) + " sek";
         }
 
+        /// <summary>
+        /// Event-Handler: Timer der jeweils nach einer Zeit ein neues Insekt startet
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timerCreate_Tick(object sender, EventArgs e)
         {
             Debug.WriteLine("Create timer");
@@ -828,6 +862,9 @@ namespace Game
             }
         }
 
+        /// <summary>
+        /// Testet ob das Spiel fertig ist.
+        /// </summary>
         private void CheckIfGameOver()
         {
             bool bIsOver = true;
