@@ -121,5 +121,23 @@ namespace Game.Properties {
                 return ResourceManager.GetString("insekt2", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die &lt;svg width=&quot;495&quot; height=&quot;495&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; overflow=&quot;hidden&quot;&gt;&lt;defs&gt;&lt;clipPath id=&quot;clip0&quot;&gt;&lt;rect x=&quot;630&quot; y=&quot;98&quot; width=&quot;495&quot; height=&quot;495&quot;/&gt;&lt;/clipPath&gt;&lt;image width=&quot;495&quot; height=&quot;495&quot; xlink:href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAe8AAAHvCAYAAAB9iVfNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAMsAAADLAAShkWtsAAP+lSURBVHhe7P13dJzXmaeL9j/3tCUG5FAoVM45R1QECoVCzjlnkiAB5kwWMylmkRRFiVTO2QqW1ZLsshzk2O0O7nZPT9/pmfFMn9DnzMy5665z173rXv/uuz/ [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string insekt3 {
+            get {
+                return ResourceManager.GetString("insekt3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die &lt;svg width=&quot;475&quot; height=&quot;475&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; overflow=&quot;hidden&quot;&gt;&lt;defs&gt;&lt;clipPath id=&quot;clip0&quot;&gt;&lt;rect x=&quot;1810&quot; y=&quot;387&quot; width=&quot;475&quot; height=&quot;475&quot;/&gt;&lt;/clipPath&gt;&lt;image width=&quot;475&quot; height=&quot;475&quot; xlink:href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAdsAAAHbCAYAAACDejA0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAMsAAADLAAShkWtsAAPU1SURBVHhe7L13fBRHvvX9/P8+N+w6kbPIKEtkTM4524BJJudsDDbGOWevc8A2GJMMNjZOIHIGIaGcc9YozGjy9HnPr6ZHCOy9d5+7994Fb53Pnq2eniRPN [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string insekt4 {
+            get {
+                return ResourceManager.GetString("insekt4", resourceCulture);
+            }
+        }
     }
 }

@@ -12,9 +12,29 @@
     <None Remove="flugbahnen\flugbahn0.xml" />
     <None Remove="flugbahnen\flugbahn1.xml" />
     <None Remove="flugbahnen\flugbahn2.xml" />
+    <None Remove="flugbahnen\flugbahn3.xml" />
+    <None Remove="flugbahnen\flugbahn4.xml" />
     <None Remove="pics\Fliegenklatsche_gelb.jpg" />
     <None Remove="pics\insekt0.svg" />
     <None Remove="pics\insekt1.svg" />
+    <None Remove="pics\pizza0.jpg" />
+    <None Remove="pics\pizza0_300dpi.jpg" />
+    <None Remove="pics\pizza1.jpg" />
+    <None Remove="pics\pizza1.png" />
+    <None Remove="pics\pizza2.jpg" />
+    <None Remove="pics\pizza2.png" />
+    <None Remove="pics\pizza3.jpg" />
+    <None Remove="pics\pizza3.png" />
+    <None Remove="pics\pizza4.jpg" />
+    <None Remove="pics\pizza4.png" />
+    <None Remove="pics\pizza5.jpg" />
+    <None Remove="pics\pizza5.png" />
+    <None Remove="pics\pizza6.jpg" />
+    <None Remove="pics\pizza6.png" />
+    <None Remove="pics\pizza7.jpg" />
+    <None Remove="pics\pizza7.png" />
+    <None Remove="pics\pizza8.jpg" />
+    <None Remove="pics\pizza8.png" />
     <None Remove="sounds\click\sound10_hall.wav" />
     <None Remove="sounds\click\sound1_hall.wav" />
     <None Remove="sounds\click\sound2_hall.wav" />
@@ -41,6 +61,66 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="flugbahnen\flugbahn2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flugbahnen\flugbahn3.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flugbahnen\flugbahn4.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza0.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza0_300dpi.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza7.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza8.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\pizza8.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="sounds\click\sound4_hall.wav">

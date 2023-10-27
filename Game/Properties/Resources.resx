@@ -133,4 +133,10 @@
   <data name="insekt2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\insekt2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="insekt3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\insekt3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="insekt4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\insekt4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>
