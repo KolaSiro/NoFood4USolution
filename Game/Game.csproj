@@ -45,6 +45,13 @@
     <None Remove="sounds\click\sound7_hall.wav" />
     <None Remove="sounds\click\sound8_hall.wav" />
     <None Remove="sounds\click\sound9_hall.wav" />
+    <None Remove="sounds\insekt\ruelpsen0.wav" />
+    <None Remove="sounds\insekt\ruelpsen1.wav" />
+    <None Remove="sounds\insekt\summen0.wav" />
+    <None Remove="sounds\insekt\summen1.wav" />
+    <None Remove="sounds\insekt\summen2.wav" />
+    <None Remove="sounds\insekt\summen3.wav" />
+    <None Remove="sounds\insekt\summen4.wav" />
     <None Remove="sounds\schreie\scream1_hall.wav" />
     <None Remove="sounds\schreie\scream2_hall.wav" />
     <None Remove="sounds\schreie\scream3_hall.wav" />
@@ -165,6 +172,27 @@
     <EmbeddedResource Include="sounds\click\sound9_hall.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="sounds\insekt\ruelpsen0.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sounds\insekt\ruelpsen1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sounds\insekt\summen0.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sounds\insekt\summen1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sounds\insekt\summen2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sounds\insekt\summen3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sounds\insekt\summen4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="sounds\schreie\scream1_hall.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -208,10 +236,6 @@
     <None Update="pics\Fliegenklatsche.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

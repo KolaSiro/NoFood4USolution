@@ -2,6 +2,7 @@
 using Game;
 using Svg;
 using System.Diagnostics;
+using System.Media;
 
 namespace Game
 {
@@ -68,6 +69,8 @@ namespace Game
         /// </summary>
         public InsektStatus StatusNow { get; set; } = InsektStatus.NONE;
         public InsektStatus StatusBefore { get; set; } = InsektStatus.NONE;
+
+        public  SoundPlayer sound = new();
 
         /// <summary>
         /// Konstruktor

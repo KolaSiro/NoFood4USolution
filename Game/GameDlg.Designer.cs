@@ -115,6 +115,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            BackgroundImage = Properties.Resources.background;
             ClientSize = new Size(800, 600);
             Controls.Add(lblLandingZone);
             Controls.Add(lblZeitUebrig);

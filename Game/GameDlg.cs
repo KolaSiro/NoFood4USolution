@@ -108,6 +108,7 @@ namespace Game
         /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
+            this.BackgroundImage = null;
             schlaeger.Clear();
             InsektenKlatscheErzeugen();
 
@@ -287,7 +288,7 @@ namespace Game
             var winkel = 0f;
             var eQuadrant = Quadrant.NONE;
 
-            var pic = insekt.Pic.Draw(nInsektSize, nInsektSize); 
+            var pic = insekt.Pic.Draw(nInsektSize, nInsektSize);
 
             var posNextXYprozent = insekt.positionen[insekt.IndexOfPosition + 1];
 
@@ -379,7 +380,7 @@ namespace Game
         }
 
         private void DrawPic(Graphics g, Pos p, Quadrant quadrant, float fWinkel, Insekt insekt)
-        {            
+        {
             var pic = insekt.Pic.Draw(nInsektSize, nInsektSize);
 
             if (DrawFlyDeath(g, p, insekt, pic) == true)
@@ -657,6 +658,10 @@ namespace Game
                         if (i == 0)
                         {
                             insekt.IsStarted = true;
+                            insekt.sound.SoundLocation = @"sounds/schreie/scream1_hall.wav";
+
+                            insekt.sound.LoadAsync();
+                            insekt.sound.PlayLooping();
                         }
                         insekten.Add(insekt);
                     }
@@ -834,6 +839,7 @@ namespace Game
 
             insekten = new();
 
+            this.BackgroundImage = Resources.background;
             Invalidate();
             Refresh();
         }
@@ -841,6 +847,7 @@ namespace Game
         private void InsektGeschlagen(Insekt insekt)
         {
             insekt.Tod = true;
+            insekt.sound.Stop();
 
             //SchlaegerBilder(insekt);
             //if (timerPlayBack.Interval > FLIEGE_MIN_GESCHWINDIGKEIT)
@@ -881,6 +888,7 @@ namespace Game
                 if (insekten[i].IsStarted == false)
                 {
                     insekten[i].IsStarted = true;
+                    insekten[i].sound.Play(); 
                     break;
                 }
             }
