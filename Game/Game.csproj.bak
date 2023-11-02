@@ -17,7 +17,6 @@
     <None Remove="pics\Fliegenklatsche_gelb.jpg" />
     <None Remove="pics\insekt0.svg" />
     <None Remove="pics\insekt1.svg" />
-    <None Remove="pics\katze.jpg" />
     <None Remove="pics\pizza0.jpg" />
     <None Remove="pics\pizza0_300dpi.jpg" />
     <None Remove="pics\pizza1.jpg" />
@@ -49,30 +48,12 @@
     <None Remove="sounds\click\sound7_hall.wav" />
     <None Remove="sounds\click\sound8_hall.wav" />
     <None Remove="sounds\click\sound9_hall.wav" />
-    <None Remove="sounds\schreie\chilbi_je_pas_hall.wav" />
-    <None Remove="sounds\schreie\scream1.wav" />
     <None Remove="sounds\schreie\scream1_hall.wav" />
     <None Remove="sounds\schreie\scream2_hall.wav" />
     <None Remove="sounds\schreie\scream3_hall.wav" />
     <None Remove="sounds\schreie\scream4_hall.wav" />
     <None Remove="sounds\schreie\scream5_hall.wav" />
     <None Remove="sounds\schreie\scream6_hall.wav" />
-    <None Remove="sounds\summen\summen0.wav" />
-    <None Remove="sounds\summen\summen1.wav" />
-    <None Remove="sounds\summen\summen2.wav" />
-    <None Remove="sounds\summen\summen3.wav" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <COMReference Include="WMPLib">
-      <WrapperTool>tlbimp</WrapperTool>
-      <VersionMinor>0</VersionMinor>
-      <VersionMajor>1</VersionMajor>
-      <Guid>6bf52a50-394a-11d3-b153-00c04f79faa6</Guid>
-      <Lcid>0</Lcid>
-      <Isolated>false</Isolated>
-      <EmbedInteropTypes>true</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -89,9 +70,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="flugbahnen\flugbahn4.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="pics\katze.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="pics\pizza0.jpg">
@@ -148,15 +126,6 @@
     <EmbeddedResource Include="pics\pizza8.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="sounds\burps\burp0.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="sounds\burps\burp1.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="sounds\burps\burp2.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="sounds\click\sound4_hall.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -199,12 +168,6 @@
     <EmbeddedResource Include="sounds\click\sound9_hall.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="sounds\schreie\chilbi_je_pas_hall.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="sounds\schreie\scream1.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="sounds\schreie\scream1_hall.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -221,18 +184,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="sounds\schreie\scream6_hall.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="sounds\summen\summen0.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="sounds\summen\summen1.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="sounds\summen\summen2.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="sounds\summen\summen3.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
@@ -264,13 +215,6 @@
 
   <ItemGroup>
     <Folder Include="Resources\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="WMPLib" Version="1.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
   </ItemGroup>
 
 </Project>

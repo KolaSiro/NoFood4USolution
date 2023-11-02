@@ -1,6 +1,8 @@
 ﻿using FlugbahnLib;
+using Game;
 using Svg;
 using System.Diagnostics;
+using System.Media;
 
 namespace Game
 {
@@ -47,15 +49,16 @@ namespace Game
         public bool IsStarted { get; set; } = false;
 
         /// <summary>
-        /// Groesse der Hit-Zone des Insekts
+        /// Groesse der Hit-Zone des Insekts    
         /// </summary>
         public Rectangle HitBox { get; set; } = new Rectangle();
 
         /// <summary>
-        /// Fluggeraeusch eines Insekts
+        /// Status eines Insekts, wenn es ueber das Essen fliegt
         /// </summary>
-        public GameSound sound = new();
+        /// 
 
+        public SoundPlayer sound = new ();
         public enum InsektStatus
         {
             NONE,
@@ -68,7 +71,6 @@ namespace Game
         /// Wir erkennen dadurch, ob das Insekt sich gerade in der Landingzone aufhaelt.
         /// </summary>
         public InsektStatus StatusNow { get; set; } = InsektStatus.NONE;
-
         public InsektStatus StatusBefore { get; set; } = InsektStatus.NONE;
 
         /// <summary>
