@@ -654,7 +654,7 @@ namespace Game
                     var sPathXML = @"flugbahnen\flugbahn" + nZufall + ".xml";
 
                     XmlSerializer seria = new XmlSerializer(typeof(List<Pos>));
-                    using (FileStream fs = new FileStream(sPathXML, FileMode.Open))
+                    using (FileStream fs = new FileStream(sPathXML, FileMode.Open, FileAccess.Read))
                     {
                         var insekt = new Insekt();
                         insekt.Id = i;
