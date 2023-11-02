@@ -20,6 +20,7 @@ namespace Game
 
         private SoundPlayer click = new();
         private SoundPlayer player = new();
+        private SoundPlayer burp = new();
 
         private bool bGameStarted;
         private bool bGameOver = true;
@@ -47,6 +48,8 @@ namespace Game
             InitializeComponent();
             SetStartButtonPosition();
             ReadPictureFromResource();
+
+            this.BackgroundImage = Image.FromFile(@"pics\katze.jpg");
             Refresh();
         }
 
@@ -140,15 +143,14 @@ namespace Game
             // Visibility
             btnStart.Visible = false;
             lblGameOver.Visible = false;
-            lblInterval.Visible = true;
             lblTreffen.Visible = true;
             lblZeitUebrig.Visible = true;
+            lblLandingZone.Visible = true;
 
             // Label-Content
             lblTreffen.Text = "Insekt " + iGetroffen + "x" + " getroffen";
-            lblInterval.Text = "Geschwindigkeit: " + timerPlayBack.Interval + " ms";
-            lblInterval.Text = "Geschwindigkeit: " + timerPlayBack.Interval + " ms";
             lblZeitUebrig.Text = "Zeit uebrig: " + (Game.MAX_SPIEL_ZEIT - iZeit) + " sek";
+            lblLandingZone.Text = iDurchLandingZone + "x durch LandingZone geflogen";
         }
 
         /// <summary>
@@ -228,7 +230,7 @@ namespace Game
                 // Draw HitBox
                 if (insekt.Tod == false)
                 {
-                    g.DrawRectangle(Pens.Green, insekt.HitBox);
+                    //g.DrawRectangle(Pens.Green, insekt.HitBox);
                 }
 
                 // wir muessen mindestens 2 Position haben fuer Flugbahnberechnung
@@ -260,6 +262,12 @@ namespace Game
                         insekt.StatusNow = Insekt.InsektStatus.ENTER;
                         iDurchLandingZone++;
                         lblLandingZone.Text = iDurchLandingZone + "x durch LandingZone geflogen";
+
+                        Random rand = new Random();
+                        int indexZufall = rand.Next(0, 3);
+
+                        burp.SoundLocation = @"sounds\burps\burp" + indexZufall + ".wav";
+                        burp.Play();
                     }
                 }
 
@@ -495,10 +503,10 @@ namespace Game
             rectEssen.Y = (int)(p.Y - w / 2);
 
             // Zeichnet die  HitBox der Landing-Zone
-            g.DrawRectangle(Pens.Blue,
-                (int)(p.X - w / 2),
-                (int)(p.Y - w / 2),
-                (int)w, (int)w);
+            //g.DrawRectangle(Pens.Blue,
+            //    (int)(p.X - w / 2),
+            //    (int)(p.Y - w / 2),
+            //    (int)w, (int)w);
         }
 
         private void DrawFood(Graphics g)
@@ -627,15 +635,17 @@ namespace Game
         }
 
         /// <summary>
-        /// Liest aus verschiedenen XML-Files die Flugbahnpositionen aus, und ordnet diese 
+        /// Liest aus verschiedenen XML-Files die Flugbahnpositionen aus, und ordnet diese
         /// den Insekten zu.
-        /// Alle Insekten liegen in einer Liste und werden mit einem Timer nacheinander 
+        /// Alle Insekten liegen in einer Liste und werden mit einem Timer nacheinander
         /// gestartet.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ReadXML(object sender, EventArgs e)
         {
+            this.BackgroundImage = null;
+
             for (int i = 0; i < uniqueNumbers.Count; i++)
             {
                 try
@@ -654,14 +664,13 @@ namespace Game
                         // Besser die svg-Dateien, d.h. als Text-Datei!!
                         // als Ressource im VS ablegen
                         insekt.Pic = SvgDocument.FromSvg<SvgDocument>(insektenBilder[nZufall]);
+                        //insekt.sound.SoundLocation = @"sounds\summen\summen0.wav";
 
                         if (i == 0)
                         {
                             insekt.IsStarted = true;
-                            insekt.sound.SoundLocation = @"sounds/schreie/scream1_hall.wav";
-
-                            insekt.sound.LoadAsync();
-                            insekt.sound.PlayLooping();
+                            insekt.sound.Play(@"summen\summen" + nZufall + ".wav");
+                            insekt.sound.Loop(true);
                         }
                         insekten.Add(insekt);
                     }
@@ -715,6 +724,7 @@ namespace Game
             {
                 GameOver();
             }
+            e.Handled = true;
         }
 
         private void GameDlg_Load(object sender, EventArgs e)
@@ -733,9 +743,9 @@ namespace Game
             // Labels verstecken
 
             lblGameOver.Visible = false;
-            lblInterval.Visible = false;
             lblTreffen.Visible = false;
             lblZeitUebrig.Visible = false;
+            lblLandingZone.Visible = false;
 
             nWidth = this.ClientSize.Width;
             nHeight = this.ClientSize.Height;
@@ -801,16 +811,29 @@ namespace Game
 
                     iGetroffen++;
                     lblTreffen.Text = "Insekt " + iGetroffen + "x" + " getroffen";
-                    lblInterval.Text = "Geschwindigkeit: " + timerPlayBack.Interval + " ms";
-                    player = new SoundPlayer("../../../sounds/schreie/scream" + numschrei + "_hall.wav");
+                    player = new SoundPlayer(@"sounds\schreie\scream" + numschrei + "_hall.wav");
                     player.Play();
-                    InsektGeschlagen(insekt); ;
+                    InsektGeschlagen(insekt);
+                }
+
+                // WENN Maus Position == Essenposition DANN ist es getroffen
+                if (rectCursor.IntersectsWith(rectEssen))
+                {
+                    // Wenn auf das Essen geklickt wird, dann stoppt das Game fuer
+                    // ca. 2 Sekunden und ein Schrei ertoent
+                    timerPlayBack.Enabled = false;
+                    player = new SoundPlayer(@"sounds\schreie\chilbi_je_pas_hall.wav");
+                    player.Play();
+                    timerOneShot.Enabled = true;
                 }
             }
         }
 
         private void GameOver()
         {
+            // not finished yet
+            this.BackgroundImage = Image.FromFile(@"pics\katze.jpg");
+
             iZeit = Game.MAX_SPIEL_ZEIT;
             nAnzahlMouseClicked = Game.MAX_SCHLAEGE;
             bGameStarted = false;
@@ -822,6 +845,9 @@ namespace Game
 
             timerCreate.Stop();
             timerCreate.Enabled = false;
+
+            timerOneShot.Stop();
+            timerOneShot.Enabled = false;
 
             lblGameOver.Text = "GAME OVER";
             lblGameOver.Font = new Font("Arial", 55, FontStyle.Bold);
@@ -837,16 +863,22 @@ namespace Game
             // Label-Content
             lblZeitUebrig.Text = "Zeit uebrig: " + (Game.MAX_SPIEL_ZEIT - iZeit) + "sek";
 
+            for (int i = 0; i < insekten.Count; i++)
+            {
+                insekten[i].sound.Loop(false);
+                insekten[i].sound.Stop();
+            }
+
+            // reset Insekten
             insekten = new();
 
-            this.BackgroundImage = Resources.background;
             Invalidate();
-            Refresh();
         }
 
         private void InsektGeschlagen(Insekt insekt)
         {
             insekt.Tod = true;
+            insekt.sound.Loop(false);
             insekt.sound.Stop();
 
             //SchlaegerBilder(insekt);
@@ -887,8 +919,9 @@ namespace Game
             {
                 if (insekten[i].IsStarted == false)
                 {
+                    insekten[i].sound.Play(@"summen\summen" + i + ".wav");
+                    insekten[i].sound.Loop(true);
                     insekten[i].IsStarted = true;
-                    insekten[i].sound.Play(); 
                     break;
                 }
             }
@@ -914,6 +947,18 @@ namespace Game
             {
                 GameOver();
             }
+        }
+
+        /// <summary>
+        /// OneShot-Timer wird gestartet, wenn man auf das Essen klickt, anstatt auf
+        /// ein Insekt. Dadurch wird das Spiel pausiert.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timerOneShot_Tick(object sender, EventArgs e)
+        {
+            timerOneShot.Enabled = false;
+            timerPlayBack.Enabled = true;
         }
     }
 }

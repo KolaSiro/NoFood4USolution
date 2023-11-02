@@ -32,12 +32,12 @@
             timerPlayBack = new System.Windows.Forms.Timer(components);
             btnStart = new Button();
             lblGameOver = new Label();
-            lblInterval = new Label();
             lblTreffen = new Label();
             lblZeitUebrig = new Label();
             timerZeitUebrig = new System.Windows.Forms.Timer(components);
             lblLandingZone = new Label();
             timerCreate = new System.Windows.Forms.Timer(components);
+            timerOneShot = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // timerPlayBack
@@ -63,15 +63,6 @@
             lblGameOver.Size = new Size(76, 15);
             lblGameOver.TabIndex = 2;
             lblGameOver.Text = "lblGameOver";
-            // 
-            // lblInterval
-            // 
-            lblInterval.AutoSize = true;
-            lblInterval.Location = new Point(12, 37);
-            lblInterval.Name = "lblInterval";
-            lblInterval.Size = new Size(59, 15);
-            lblInterval.TabIndex = 4;
-            lblInterval.Text = "lblInterval";
             // 
             // lblTreffen
             // 
@@ -99,7 +90,7 @@
             // lblLandingZone
             // 
             lblLandingZone.AutoSize = true;
-            lblLandingZone.Location = new Point(12, 52);
+            lblLandingZone.Location = new Point(12, 37);
             lblLandingZone.Name = "lblLandingZone";
             lblLandingZone.Size = new Size(90, 15);
             lblLandingZone.TabIndex = 8;
@@ -110,17 +101,20 @@
             timerCreate.Interval = 5000;
             timerCreate.Tick += timerCreate_Tick;
             // 
+            // timerOneShot
+            // 
+            timerOneShot.Interval = 2000;
+            timerOneShot.Tick += timerOneShot_Tick;
+            // 
             // GameDlg
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            BackgroundImage = Properties.Resources.background;
             ClientSize = new Size(800, 600);
             Controls.Add(lblLandingZone);
             Controls.Add(lblZeitUebrig);
             Controls.Add(lblTreffen);
-            Controls.Add(lblInterval);
             Controls.Add(lblGameOver);
             Controls.Add(btnStart);
             DoubleBuffered = true;
@@ -144,11 +138,11 @@
         private System.Windows.Forms.Timer timerPlayBack;
         private Button btnStart;
         private Label lblGameOver;
-        private Label lblInterval;
         private Label lblTreffen;
         private Label lblZeitUebrig;
         private System.Windows.Forms.Timer timerZeitUebrig;
         private Label lblLandingZone;
         private System.Windows.Forms.Timer timerCreate;
+        private System.Windows.Forms.Timer timerOneShot;
     }
 }
