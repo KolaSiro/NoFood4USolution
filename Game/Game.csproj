@@ -15,9 +15,10 @@
     <None Remove="flugbahnen\flugbahn3.xml" />
     <None Remove="flugbahnen\flugbahn4.xml" />
     <None Remove="pics\Fliegenklatsche_gelb.jpg" />
+    <None Remove="pics\icon.ico" />
+    <None Remove="pics\icon.png" />
     <None Remove="pics\insekt0.svg" />
     <None Remove="pics\insekt1.svg" />
-    <None Remove="pics\katze.jpg" />
     <None Remove="pics\pizza0.jpg" />
     <None Remove="pics\pizza0_300dpi.jpg" />
     <None Remove="pics\pizza1.jpg" />
@@ -36,6 +37,7 @@
     <None Remove="pics\pizza7.png" />
     <None Remove="pics\pizza8.jpg" />
     <None Remove="pics\pizza8.png" />
+    <None Remove="pics\start_bildschirm.jpg" />
     <None Remove="sounds\burps\burp0.wav" />
     <None Remove="sounds\burps\burp1.wav" />
     <None Remove="sounds\burps\burp2.wav" />
@@ -83,6 +85,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EditorConfigFiles Include="pics\icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EditorConfigFiles>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="flugbahnen\flugbahn0.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -98,7 +106,7 @@
     <EmbeddedResource Include="flugbahnen\flugbahn4.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="pics\katze.jpg">
+    <EmbeddedResource Include="pics\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="pics\pizza0.jpg">
@@ -153,6 +161,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="pics\pizza8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pics\start_bildschirm.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="sounds\burps\burp0.wav">

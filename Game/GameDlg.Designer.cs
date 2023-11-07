@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameDlg));
             timerPlayBack = new System.Windows.Forms.Timer(components);
             btnStart = new Button();
             lblGameOver = new Label();
@@ -47,12 +48,14 @@
             // 
             // btnStart
             // 
+            btnStart.BackColor = Color.FromArgb(128, 255, 128);
+            btnStart.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnStart.Location = new Point(346, 484);
             btnStart.Name = "btnStart";
             btnStart.Size = new Size(125, 50);
             btnStart.TabIndex = 0;
             btnStart.Text = "Start";
-            btnStart.UseVisualStyleBackColor = true;
+            btnStart.UseVisualStyleBackColor = false;
             btnStart.Click += btnStart_Click;
             // 
             // lblGameOver
@@ -119,9 +122,10 @@
             Controls.Add(btnStart);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
             Name = "GameDlg";
-            Text = "Game";
+            Text = "No Food 4 U : Lehrlingswettbewerb Züri Oberland 2023";
             FormClosing += GameDlg_FormClosing;
             Load += GameDlg_Load;
             ResizeEnd += GameDlg_ResizeEnd;

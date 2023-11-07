@@ -49,7 +49,7 @@ namespace Game
             SetStartButtonPosition();
             ReadPictureFromResource();
 
-            this.BackgroundImage = Image.FromFile(@"pics\katze.jpg");
+            this.BackgroundImage = Image.FromFile(@"pics\start_bildschirm.jpg");
             Refresh();
         }
 
@@ -105,7 +105,7 @@ namespace Game
         }
 
         /// <summary>
-        /// Event-Handler: Startet das Bild
+        /// Event-Handler: Startet das Spiel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -614,7 +614,7 @@ namespace Game
         {
             btnStart.Location = new Point(
                 ClientSize.Width / 2,
-                ClientSize.Height / 2) - btnStart.Size / 2;
+                ClientSize.Height / 4) - btnStart.Size / 4;
         }
 
         /// <summary>
@@ -832,7 +832,7 @@ namespace Game
         private void GameOver()
         {
             // not finished yet
-            this.BackgroundImage = Image.FromFile(@"pics\katze.jpg");
+            this.BackgroundImage = Image.FromFile(@"pics\start_bildschirm.jpg");
 
             iZeit = Game.MAX_SPIEL_ZEIT;
             nAnzahlMouseClicked = Game.MAX_SCHLAEGE;

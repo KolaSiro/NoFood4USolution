@@ -61,32 +61,12 @@ namespace Game.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap background {
-            get {
-                object obj = ResourceManager.GetObject("background", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
         internal static byte[] biene {
             get {
                 object obj = ResourceManager.GetObject("biene", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap fly_icon64x64 {
-            get {
-                object obj = ResourceManager.GetObject("fly_icon64x64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -105,8 +85,7 @@ namespace Game.Properties {
         ///   xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;
         ///   xmlns=&quot;http://www.w3.org/2000/svg&quot;
         ///   xmlns:svg=&quot;http://www.w3.org/2000/svg&quot;&gt;
-        ///  &lt;sodipodi:namedview
-        ///  [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///  &lt;sodipo [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         internal static string insekt0 {
             get {
